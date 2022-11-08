@@ -1,12 +1,14 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
-// for logo
+// import { FaArrowDown } from "react-icons/fa";
 
 import { GiPhotoCamera } from "react-icons/gi";
 
 export default function Header() {
+  // service onclick menu
+  const [toggle, setToggle] = useState(false);
   return (
     <Popover className="relative h-full">
       {/* for large device start */}
@@ -31,8 +33,54 @@ export default function Header() {
             as="nav"
             className="hidden space-x-6 md:flex text-white"
           >
-            <Link to="#" className="text-base font-medium">
-              Wedding
+            <Link
+              to="#"
+              onClick={() => setToggle(!toggle)}
+              className="text-base font-medium relative cursor-pointer"
+            >
+            Services
+              {/* <span className="flex items-center space-x-2">
+                <span>Services</span>{" "}
+                <span>
+                  <FaArrowDown></FaArrowDown>
+                </span>
+              </span>
+              <ul
+                className={`absolute text-black bg-[#FFAD01] min-w-full mt-7 rounded-sm p-4 space-y-3 ${
+                  toggle ? "block" : "hidden"
+                }`}
+              >
+                <li>
+                  <Link className="bg-white rounded-sm text-orange-500 px-3 py-3 block hover:bg-orange-500 hover:text-white">
+                    Wedding
+                  </Link>
+                </li>
+                <li>
+                  <Link className="bg-white rounded-sm text-orange-500 px-3 py-3 block hover:bg-orange-500 hover:text-white">
+                    FASHION{" "}
+                  </Link>
+                </li>
+                <li>
+                  <Link className="bg-white rounded-sm text-orange-500 px-3 py-3 block hover:bg-orange-500 hover:text-white">
+                    BIRTHDAY{" "}
+                  </Link>
+                </li>
+                <li>
+                  <Link className="bg-white rounded-sm text-orange-500 px-3 py-3 block hover:bg-orange-500 hover:text-white">
+                    COMMERCIAL{" "}
+                  </Link>
+                </li>
+                <li>
+                  <Link className="bg-white rounded-sm text-orange-500 px-3 py-3 block hover:bg-orange-500 hover:text-white">
+                    CORPORATE EVENTS
+                  </Link>
+                </li>
+                <li>
+                  <Link className="bg-white rounded-sm text-orange-500 px-3 py-3 block hover:bg-orange-500 hover:text-white">
+                    TRAVEL & NATURE
+                  </Link>
+                </li>
+              </ul> */}
             </Link>
             <Link to="#" className="text-base font-medium">
               Fashion
@@ -47,7 +95,7 @@ export default function Header() {
             </Link>
             <Link
               to="/"
-              className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium text-yellow-500 shadow-sm hover:bg-yellow-400 hover:text-black"
+              className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium text-yellow-500 shadow-sm hover:bg-[#FFAD01] hover:text-black"
             >
               Sign up
             </Link>
@@ -73,8 +121,7 @@ export default function Header() {
           <div className="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
             <div className="px-5 pt-5 pb-6">
               <div className="flex items-center justify-between">
-                <div
-                  className="text-4xl flex items-center space-x-2 font-bold text-yellow-500">
+                <div className="text-4xl flex items-center space-x-2 font-bold text-[#FFAD01]">
                   <GiPhotoCamera></GiPhotoCamera>
                   <span className="text-xl">The Photo</span>
                 </div>
@@ -88,33 +135,51 @@ export default function Header() {
             </div>
             <div className="space-y-6 py-6 px-5">
               <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                <Link
-                  to="/"
-                  className="text-base font-medium text-yellow-500"
-                >
-                  Pricing
+                <Link to="/" className="text-base font-medium text-[#FFAD01]">
+                Wedding
                 </Link>
 
+                {/* <Link
+                  href="/"
+                  className="text-base font-medium text-[#FFAD01] "
+                >
+                  FASHION
+                </Link>
                 <Link
                   href="/"
-                  className="text-base font-medium text-yellow-500 "
+                  className="text-base font-medium text-[#FFAD01] "
                 >
-                  Docs
+                  FASHION
                 </Link>
+                <Link
+                  href="/"
+                  className="text-base font-medium text-[#FFAD01] "
+                >
+                  FASHION
+                </Link>
+                <Link
+                  href="/"
+                  className="text-base font-medium text-[#FFAD01] "
+                >
+                  FASHION
+                </Link>
+                <Link
+                  href="/"
+                  className="text-base font-medium text-[#FFAD01] "
+                >
+                  FASHION
+                </Link> */}
               </div>
               <div>
                 <Link
                   to="/"
-                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-yellow-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-yello-700"
+                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-[#FFAD01] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-yello-700"
                 >
                   Sign up
                 </Link>
                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                   Existing customer?{" "}
-                  <Link
-                    to="/"
-                    className="text-yellow-600 hover:text-yellow-500"
-                  >
+                  <Link to="/" className="text-[#FFAD01] hover:text-yellow-500">
                     Sign in
                   </Link>
                 </p>

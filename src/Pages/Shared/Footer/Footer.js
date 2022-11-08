@@ -3,7 +3,7 @@ import { GiPhotoCamera } from "react-icons/gi";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer className="px-4 divide-y bg-yellow-500 text-white dark:bg-gray-800 dark:text-gray-100">
+    <footer className="px-4 divide-y bg-[#FFAD01] text-white dark:bg-gray-800 dark:text-gray-100">
       <div className="container flex flex-col justify-center lg:justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0 text-center lg:text-start">
         <div className="flex justify-center lg:justify-start items-center lg:w-1/3">
           <Link

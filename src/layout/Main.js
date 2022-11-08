@@ -29,12 +29,12 @@ const Main = () => {
   return (
     <section>
       {/* Navigation start */}
-      <section className={`${show? "fixed top-0 w-full h-20 border-b-[1px] bg-yellow-500": "hidden"}`}>
+      <section className={`${show? "fixed top-0 w-full h-20 border-b-[1px] bg-[#FFAD01] z-10": "hidden"}`}>
         <Header></Header>
       </section>
       {/* Navigation end */}
       {/* Body section start */}
-      <section className="min-h-screen pt-20 container mx-auto">
+      <section className="min-h-screen pt-20">
         <Outlet></Outlet>
       </section>
       {/* Body section end */}
