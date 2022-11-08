@@ -1,66 +1,86 @@
-import React from "react";
+import { LockClosedIcon } from "@heroicons/react/20/solid";
+import { GiPhotoCamera } from "react-icons/gi";
+import { Link } from "react-router-dom";
 
-const Login = () => {
+export default function Example() {
   return (
-    <section className="p-6 dark:bg-gray-800 dark:text-gray-100">
-      <div className="container grid gap-6 mx-auto text-center lg:grid-cols-2 xl:grid-cols-5">
-        <div className="w-full px-6 py-16 rounded-md sm:px-12 md:px-16 xl:col-span-2 dark:bg-gray-900">
-          <span className="block mb-2 dark:text-violet-400">
-            Mamba design system
-          </span>
-          <h1 className="text-5xl font-extrabold dark:text-gray-50">
-            Build it with Mamba
-          </h1>
-          <p className="my-8">
-            <span className="font-medium dark:text-gray-50">
-              Modular and versatile.
-            </span>
-            Fugit vero facilis dolor sit neque cupiditate minus esse accusamus
-            cumque at.
-          </p>
-          <form
-            novalidate=""
-            action=""
-            className="self-stretch space-y-3 ng-untouched ng-pristine ng-valid"
-          >
-            <div>
-              <label for="name" className="text-sm sr-only">
-                Your name
-              </label>
-              <input
-                id="name"
-                type="text"
-                placeholder="Your name"
-                className="w-full rounded-md focus:ring focus:ring-violet-400 dark:border-gray-700"
-              />
-            </div>
-            <div>
-              <label for="lastname" className="text-sm sr-only">
-                Email address
-              </label>
-              <input
-                id="lastname"
-                type="text"
-                placeholder="Email address"
-                className="w-full rounded-md focus:ring focus:ring-violet-400 dark:border-gray-700"
-              />
-            </div>
-            <button
-              type="button"
-              className="w-full py-2 font-semibold rounded dark:bg-violet-400 dark:text-gray-900"
+    <>
+      <div className="flex h-[70vh] items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-md space-y-8">
+          <div className="flex items-center justify-center">
+            <Link
+              className="text-4xl flex items-center space-x-2 font-bold text-orange-400"
+              to="/"
             >
-              Join the waitlist
-            </button>
+              <GiPhotoCamera></GiPhotoCamera>
+              <span className="text-xl">The Photo</span>
+            </Link>
+          </div>
+          <form className="mt-8 space-y-6" action="#" method="POST">
+            <input type="hidden" name="remember" defaultValue="true" />
+            <div className="-space-y-px rounded-md shadow-sm">
+              <div>
+                <label htmlFor="email-address" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="email-address"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-orange-400 focus:outline-none focus:ring-orange-400 sm:text-sm"
+                  placeholder="Email address"
+                />
+              </div>
+              <div>
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-orange-400 focus:outline-none focus:ring-orange-400 sm:text-sm"
+                  placeholder="Password"
+                />
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
+                <Link className="underline">Register</Link>
+              </div>
+
+              <div className="text-sm">
+                <a
+                  href="#"
+                  className="font-medium text-orange-400 hover:text-orange-400"
+                >
+                  Forgot your password?
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                className="group relative flex w-full justify-center rounded-md border border-transparent bg-orange-400 py-2 px-4 text-sm font-medium text-white hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2"
+              >
+                <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                  <LockClosedIcon
+                    className="h-5 w-5 text-yellow-400 group-hover:text-yellow-400"
+                    aria-hidden="true"
+                  />
+                </span>
+                Sign in
+              </button>
+            </div>
           </form>
         </div>
-        <img
-          src="https://source.unsplash.com/random/480x360"
-          alt=""
-          className="object-cover w-full rounded-md xl:col-span-3 dark:bg-gray-500"
-        />
       </div>
-    </section>
+    </>
   );
-};
-
-export default Login;
+}

@@ -1,14 +1,16 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 // import { FaArrowDown } from "react-icons/fa";
 
 import { GiPhotoCamera } from "react-icons/gi";
+import { AuthContext } from "../../../context/AuthContext/AuthProvider";
 
 export default function Header() {
   // service onclick menu
   const [toggle, setToggle] = useState(false);
+  const { user } = useContext(AuthContext);
   return (
     <Popover className="relative h-full">
       {/* for large device start */}
@@ -38,7 +40,7 @@ export default function Header() {
               onClick={() => setToggle(!toggle)}
               className="text-base font-medium relative cursor-pointer"
             >
-            Services
+              Services
               {/* <span className="flex items-center space-x-2">
                 <span>Services</span>{" "}
                 <span>
@@ -89,17 +91,26 @@ export default function Header() {
               Commercial
             </Link>
           </Popover.Group>
-          <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0 text-white">
-            <Link to="/" className="whitespace-nowrap text-base font-medium">
-              Sign in
-            </Link>
-            <Link
-              to="/"
-              className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium text-yellow-500 shadow-sm hover:bg-[#FFAD01] hover:text-black"
-            >
-              Sign up
-            </Link>
-          </div>
+          {user ? (
+            <></>
+          ) : (
+            <>
+              <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0 text-white">
+                <Link
+                  to="/login"
+                  className="whitespace-nowrap text-base font-medium"
+                >
+                  Sign in
+                </Link>
+                <Link
+                  to="/"
+                  className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium text-yellow-500 shadow-sm hover:bg-[#FFAD01] hover:text-black"
+                >
+                  Sign up
+                </Link>
+              </div>
+            </>
+          )}
         </div>
         {/* for large device end */}
       </div>
@@ -136,7 +147,7 @@ export default function Header() {
             <div className="space-y-6 py-6 px-5">
               <div className="grid grid-cols-2 gap-y-4 gap-x-8">
                 <Link to="/" className="text-base font-medium text-[#FFAD01]">
-                Wedding
+                  Wedding
                 </Link>
 
                 {/* <Link
@@ -171,18 +182,27 @@ export default function Header() {
                 </Link> */}
               </div>
               <div>
-                <Link
-                  to="/"
-                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-[#FFAD01] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-yello-700"
-                >
-                  Sign up
-                </Link>
-                <p className="mt-6 text-center text-base font-medium text-gray-500">
-                  Existing customer?{" "}
-                  <Link to="/" className="text-[#FFAD01] hover:text-yellow-500">
-                    Sign in
-                  </Link>
-                </p>
+                {user ? (
+                  <></>
+                ) : (
+                  <>
+                    <Link
+                      to="/"
+                      className="flex w-full items-center justify-center rounded-md border border-transparent bg-[#FFAD01] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-yello-700"
+                    >
+                      Sign up
+                    </Link>
+                    <p className="mt-6 text-center text-base font-medium text-gray-500">
+                      Existing customer?{" "}
+                      <Link
+                        to="/login"
+                        className="text-[#FFAD01] hover:text-yellow-500"
+                      >
+                        Sign in
+                      </Link>
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           </div>
