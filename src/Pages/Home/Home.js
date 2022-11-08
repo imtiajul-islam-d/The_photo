@@ -1,12 +1,15 @@
 import React from "react";
 import Banner from "./Banner/Banner";
+import ServiceOverview from "./ServiceOverview/ServiceOverview";
 
 
 const Home = () => {
   return (
     <section>
       <Banner></Banner>
-      <section className="h-screen bg-red-500"></section>
+      <section className="min-h-screen flex justify-center items-center">
+        <ServiceOverview></ServiceOverview>
+      </section>
     </section>
   );
 };
