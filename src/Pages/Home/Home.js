@@ -2,7 +2,6 @@ import React from "react";
 import Banner from "./Banner/Banner";
 import ServiceOverview from "./ServiceOverview/ServiceOverview";
 
-
 const Home = () => {
   return (
     <section>
