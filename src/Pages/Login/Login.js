@@ -22,7 +22,6 @@ export default function Example() {
     emailLogin(email, password)
     .then(user => {
       form.reset()
-      console.log(user)
     })
     .catch(err => {
       setError(err.message);

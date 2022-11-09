@@ -17,6 +17,7 @@ const AuthProvider = ({children}) => {
     }
     // update profile value
     const updateHandler = (profile) => {
+        setLoading(true)
         return updateProfile(auth.currentUser, profile)
     }
     // email login

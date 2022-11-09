@@ -35,7 +35,6 @@ const Signup = () => {
                 updateHandler(updateObject)
                 .then(() => {
                     form.reset()
-                    console.log(user.user);
                 })
                 .catch(() => {})
                 // after successful register user must need to sign in
