@@ -1,8 +1,31 @@
 import { LockClosedIcon } from "@heroicons/react/20/solid";
+import { GoogleAuthProvider } from "firebase/auth";
+import { useContext } from "react";
 import { GiPhotoCamera } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
+
+// creating google provider 
+const googleProvider = new GoogleAuthProvider();
 
 export default function Example() {
+    const {googleAuthLogin} = useContext(AuthContext)
+    // handling password login
+    const handleEmailPasswordLogin = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email;
+        const password = form.password;
+    }
+    // google login
+    const googlePopupLogin = () => {
+        googleAuthLogin(googleProvider)
+        .then(res => res.json())
+        .catch(err => {
+            console.log(err.message);
+        })
+    }
   return (
     <>
       <div className="flex h-[70vh] items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -10,13 +33,14 @@ export default function Example() {
           <div className="flex items-center justify-center">
             <Link
               className="text-4xl flex items-center space-x-2 font-bold text-orange-400"
-              to="/"
+              to=""
+              onClick={googlePopupLogin}
             >
               <GiPhotoCamera></GiPhotoCamera>
               <span className="text-xl">The Photo</span>
             </Link>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form onSubmit={handleEmailPasswordLogin} className="mt-8 space-y-6" action="#" method="POST">
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
@@ -55,12 +79,12 @@ export default function Example() {
               </div>
 
               <div className="text-sm">
-                <a
-                  href="#"
+                <Link
+                  to=""
                   className="font-medium text-orange-400 hover:text-orange-400"
                 >
                   Forgot your password?
-                </a>
+                </Link>
               </div>
             </div>
 

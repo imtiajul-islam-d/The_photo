@@ -10,12 +10,18 @@ import { AuthContext } from "../../../context/AuthContext/AuthProvider";
 export default function Header() {
   // service onclick menu
   const [toggle, setToggle] = useState(false);
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
+  // implement logout
+  const handleLogout = () => {
+    logout()
+    .then(() => {})
+    .catch(() => {})
+  }
   return (
     <Popover className="relative h-full">
       {/* for large device start */}
       <div className="mx-auto container px-4 xl:px-0 h-full">
-        <div className="h-full flex items-center justify-between md:justify-start md:space-x-14">
+        <div className="h-full flex items-center justify-between md:space-x-14">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <Link
               className="text-4xl flex items-center space-x-2 font-bold text-white"
@@ -84,18 +90,28 @@ export default function Header() {
                 </li>
               </ul> */}
             </Link>
-            <Link to="#" className="text-base font-medium">
-              Fashion
-            </Link>
-            <Link to="#" className="text-base font-medium">
-              Commercial
-            </Link>
+            {user ? (
+              <>
+                <Link to="#" className="text-base font-medium">
+                  My reviews
+                </Link>
+                <Link to="#" className="text-base font-medium">
+                  Add service
+                </Link>
+              </>
+            ) : (
+              <></>
+            )}
           </Popover.Group>
-          {user ? (
-            <></>
-          ) : (
-            <>
-              <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0 text-white">
+          <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0 text-white">
+            {user ? (
+              <>
+                <span onClick={handleLogout} className=" bg-white px-4 py-2 font-medium text-yellow-500 shadow-sm hover:bg-[#FFAD01] hover:text-black cursor-pointer rounded-md">
+                  Logout
+                </span>
+              </>
+            ) : (
+              <>
                 <Link
                   to="/login"
                   className="whitespace-nowrap text-base font-medium"
@@ -108,9 +124,9 @@ export default function Header() {
                 >
                   Sign up
                 </Link>
-              </div>
-            </>
-          )}
+              </>
+            )}
+          </div>
         </div>
         {/* for large device end */}
       </div>
@@ -147,7 +163,7 @@ export default function Header() {
             <div className="space-y-6 py-6 px-5">
               <div className="grid grid-cols-2 gap-y-4 gap-x-8">
                 <Link to="/" className="text-base font-medium text-[#FFAD01]">
-                  Wedding
+                  Services
                 </Link>
 
                 {/* <Link
@@ -180,10 +196,32 @@ export default function Header() {
                 >
                   FASHION
                 </Link> */}
+                {user ? (
+                  <>
+                    <Link
+                      to="/"
+                      className="text-base font-medium text-[#FFAD01]"
+                    >
+                      My reviews
+                    </Link>
+                    <Link
+                      to="/"
+                      className="text-base font-medium text-[#FFAD01]"
+                    >
+                      Add service
+                    </Link>
+                  </>
+                ) : (
+                  <></>
+                )}
               </div>
               <div>
                 {user ? (
-                  <></>
+                  <>
+                    <span onClick={handleLogout} className="flex w-full items-center justify-center rounded-md border border-transparent bg-[#FFAD01] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-yello-700">
+                      Logout
+                    </span>
+                  </>
                 ) : (
                   <>
                     <Link
