@@ -2,7 +2,7 @@ import { LockClosedIcon } from "@heroicons/react/20/solid";
 import { GoogleAuthProvider } from "firebase/auth";
 import { useContext, useState } from "react";
 import { GiPhotoCamera } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 
@@ -12,6 +12,10 @@ const googleProvider = new GoogleAuthProvider();
 export default function Example() {
   const { emailLogin, googleAuthLogin } = useContext(AuthContext);
   const [error, setError] = useState('')
+  // this section is for navigation
+  const navigate = useNavigate();
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
   // handling password login
   const handleEmailPasswordLogin = (event) => {
     setError('')
@@ -21,6 +25,7 @@ export default function Example() {
     const password = form.password.value;
     emailLogin(email, password)
     .then(user => {
+      navigate(from, {replace: true})
       form.reset()
     })
     .catch(err => {
@@ -31,9 +36,11 @@ export default function Example() {
   // google login
   const googlePopupLogin = () => {
     googleAuthLogin(googleProvider)
-      .then((res) => res.json())
+      .then((user) => {
+        navigate(from, {replace: true})
+      })
       .catch((err) => {
-  
+        setError(err.message)
       });
   };
   return (

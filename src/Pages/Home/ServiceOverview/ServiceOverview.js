@@ -20,7 +20,7 @@ const ServiceOverview = () => {
             {/*  */}
             <PhotoProvider>
               <PhotoView src={img1}>
-                <img src={img1} alt="" />
+                <img className="w-full" src={img1} alt="" />
               </PhotoView>
             </PhotoProvider>
             {/*  */}

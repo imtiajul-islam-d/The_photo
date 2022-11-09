@@ -95,7 +95,7 @@ export default function Header() {
                 <Link to="#" className="text-base font-medium">
                   My reviews
                 </Link>
-                <Link to="#" className="text-base font-medium">
+                <Link to="/addService" className="text-base font-medium">
                   Add service
                 </Link>
               </>
@@ -208,7 +208,7 @@ export default function Header() {
                       My reviews
                     </Link>
                     <Link
-                      to="/"
+                      to="/addService"
                       className="text-base font-medium text-[#FFAD01]"
                     >
                       Add service
