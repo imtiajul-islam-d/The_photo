@@ -1,6 +1,6 @@
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 import { GoogleAuthProvider } from "firebase/auth";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { GiPhotoCamera } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext/AuthProvider";
@@ -10,25 +10,36 @@ import { FaGoogle } from "react-icons/fa";
 const googleProvider = new GoogleAuthProvider();
 
 export default function Example() {
-  const { googleAuthLogin } = useContext(AuthContext);
+  const { emailLogin, googleAuthLogin } = useContext(AuthContext);
+  const [error, setError] = useState('')
   // handling password login
   const handleEmailPasswordLogin = (event) => {
+    setError('')
     event.preventDefault();
     const form = event.target;
-    const email = form.email;
-    const password = form.password;
+    const email = form.email.value;
+    const password = form.password.value;
+    emailLogin(email, password)
+    .then(user => {
+      form.reset()
+      console.log(user)
+    })
+    .catch(err => {
+      setError(err.message);
+    })
+    
   };
   // google login
   const googlePopupLogin = () => {
     googleAuthLogin(googleProvider)
       .then((res) => res.json())
       .catch((err) => {
-        console.log(err.message);
+        setError(err.message);
       });
   };
   return (
     <>
-      <div className="flex h-[70vh] items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="flex min-h-[70vh] items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ">
         <div className="w-full max-w-md space-y-8">
           <div className="flex items-center justify-center">
             <Link
@@ -76,10 +87,12 @@ export default function Example() {
                 />
               </div>
             </div>
-
+            {
+              error && <div className="text-red-600">{error}</div>
+            }
             <div className="flex items-center justify-between">
               <div className="flex items-center">
-                <Link className="underline">Register</Link>
+                <Link to='/signup' className="underline">Register</Link>
               </div>
 
               <div className="text-sm">

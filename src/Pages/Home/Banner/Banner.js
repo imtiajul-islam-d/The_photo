@@ -3,7 +3,7 @@ import { FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const Banner = () => {
   return (
-    <section className="h-screen relative">
+    <section className="h-screen relative mb-5 lg:mb-0">
       {/* top */}
       <div className="h-[40%] overflow-hidden">
         <img className="h-full w-full lg:h-auto" src="testBanner.jpg" alt="" />

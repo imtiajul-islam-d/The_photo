@@ -14,9 +14,9 @@ export default function Header() {
   // implement logout
   const handleLogout = () => {
     logout()
-    .then(() => {})
-    .catch(() => {})
-  }
+      .then(() => {})
+      .catch(() => {});
+  };
   return (
     <Popover className="relative h-full">
       {/* for large device start */}
@@ -106,7 +106,10 @@ export default function Header() {
           <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0 text-white">
             {user ? (
               <>
-                <span onClick={handleLogout} className=" bg-white px-4 py-2 font-medium text-yellow-500 shadow-sm hover:bg-[#FFAD01] hover:text-black cursor-pointer rounded-md">
+                <span
+                  onClick={handleLogout}
+                  className=" bg-white px-4 py-2 font-medium text-yellow-500 shadow-sm hover:bg-[#FFAD01] hover:text-black cursor-pointer rounded-md"
+                >
                   Logout
                 </span>
               </>
@@ -119,7 +122,7 @@ export default function Header() {
                   Sign in
                 </Link>
                 <Link
-                  to="/"
+                  to="/signup"
                   className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium text-yellow-500 shadow-sm hover:bg-[#FFAD01] hover:text-black"
                 >
                   Sign up
@@ -218,14 +221,17 @@ export default function Header() {
               <div>
                 {user ? (
                   <>
-                    <span onClick={handleLogout} className="flex w-full items-center justify-center rounded-md border border-transparent bg-[#FFAD01] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-yello-700">
+                    <span
+                      onClick={handleLogout}
+                      className="flex w-full items-center justify-center rounded-md border border-transparent bg-[#FFAD01] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-yello-700"
+                    >
                       Logout
                     </span>
                   </>
                 ) : (
                   <>
                     <Link
-                      to="/"
+                      to="/signup"
                       className="flex w-full items-center justify-center rounded-md border border-transparent bg-[#FFAD01] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-yello-700"
                     >
                       Sign up
