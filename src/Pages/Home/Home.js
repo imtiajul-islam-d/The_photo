@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <section>
       <Banner></Banner>
-      <section className="min-[50vh] flex items-center justify-center mt-4 backdrop-blur-lg bg-white/30">
+      <section className="min-[50vh] flex items-center justify-center mt-4  bg-orange-50">
         <QuickHeading></QuickHeading>
       </section>
       <section className="min-h-screen flex justify-center items-center">
