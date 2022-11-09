@@ -58,7 +58,7 @@ const Signup = () => {
         googleAuthLogin(googleProvider)
           .then((res) => res.json())
           .catch((err) => {
-            setError(err.message);
+            
           });
       };
   return (
