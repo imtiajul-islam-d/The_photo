@@ -34,7 +34,7 @@ const ServiceOverview = () => {
           {/*  */}
         </div>
         <div className="flex items-center justify-center">
-          <Link className="bg-orange-500 px-5 py-3 rounded-md hover:bg-gray-100 hover:text-orange-500 text-white">
+          <Link to='/services' className="bg-orange-500 px-5 py-3 rounded-md hover:bg-gray-100 hover:text-orange-500 text-white">
             See all
           </Link>
         </div>

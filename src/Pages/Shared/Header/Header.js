@@ -42,7 +42,7 @@ export default function Header() {
             className="hidden space-x-6 md:flex text-white"
           >
             <Link
-              to="#"
+              to="/services"
               onClick={() => setToggle(!toggle)}
               className="text-base font-medium relative cursor-pointer"
             >
@@ -165,7 +165,7 @@ export default function Header() {
             </div>
             <div className="space-y-6 py-6 px-5">
               <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                <Link to="/" className="text-base font-medium text-[#FFAD01]">
+                <Link to="/services" className="text-base font-medium text-[#FFAD01]">
                   Services
                 </Link>
 
