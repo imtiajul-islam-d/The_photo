@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
             {
                 path: '/services',
                 loader:  async () => {
-                    return fetch("http://localhost:5000/services");
+                    return fetch("https://personal-review-server.vercel.app/services");
                   },
                 element: <Service></Service>
             },
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
                 path: "/services/:id",
                 loader: async ({ params }) => {
                     console.log(params.id)
-                  return fetch(`http://localhost:5000/services/${params.id}`);
+                  return fetch(`https://personal-review-server.vercel.app/services/${params.id}`);
                 },
             }
         ]

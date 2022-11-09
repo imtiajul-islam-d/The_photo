@@ -5,7 +5,7 @@ const Gallery = () => {
   const [image, setImage] = useState([]);
   // // fetch data for gallery
   useEffect(() => {
-    const url = "http://localhost:5000/services";
+    const url = "https://personal-review-server.vercel.app/services";
     //   // fetching data
     fetch(url)
       .then((res) => res.json())

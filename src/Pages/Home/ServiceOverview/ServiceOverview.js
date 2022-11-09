@@ -8,7 +8,7 @@ const ServiceOverview = () => {
   const [service, setService] = useState([])
   // // fetch data to show the featured service
   useEffect(() => {
-    const url = `http://localhost:5000/services?size=${3}`;
+    const url = `https://personal-review-server.vercel.app/services?size=${3}`;
   //   // fetching data 
     fetch(url)
     .then(res => res.json())
