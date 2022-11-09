@@ -7,6 +7,7 @@ import Service from "../../Pages/Service/Service";
 import Login from "../../Pages/Login/Login";
 import Signup from "../../Pages/Signup/Signup";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
+import ServiceDetails from "../../Pages/ServiceDetails/ServiceDetails";
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +37,14 @@ export const router = createBrowserRouter([
                     return fetch("http://localhost:5000/services");
                   },
                 element: <Service></Service>
+            },
+            {
+                element: <PrivetRoute><ServiceDetails></ServiceDetails></PrivetRoute>,
+                path: "/services/:id",
+                loader: async ({ params }) => {
+                    console.log(params.id)
+                  return fetch(`http://localhost:5000/services/${params.id}`);
+                },
             }
         ]
     }

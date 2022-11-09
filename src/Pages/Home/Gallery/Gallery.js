@@ -26,7 +26,7 @@ const Gallery = () => {
         <PhotoProvider>
           {image.map((img) => {
             return (
-              <PhotoView src={img.image}>
+              <PhotoView key={img._id} src={img.image}>
                 <img className="w-full h-full" src={img.image} alt="" />
               </PhotoView>
             );

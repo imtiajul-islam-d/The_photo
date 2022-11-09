@@ -3,8 +3,9 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link } from "react-router-dom";
 
 const ServiceView = ({data}) => {
-    const {image, event, price, description} = data
+    const {image, event, price, description, _id} = data
     const showDescription = description.substring(0, 100);
+    console.log(_id)
   return (
     <article className="flex flex-col dark:bg-gray-900 border">
       {/*  */}
@@ -42,7 +43,7 @@ const ServiceView = ({data}) => {
           ) : (
             <></>
           )}
-          <Link className="btn bg-orange-400 px-4 py-3 text-white hover:text-orange-400 hover:bg-gray-100">
+          <Link to={`/services/${_id}`} className="btn bg-orange-400 px-4 py-3 text-white hover:text-orange-400 hover:bg-gray-100">
             View details
           </Link>
         </div>
