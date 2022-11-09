@@ -1,5 +1,6 @@
 import React from "react";
 import Banner from "./Banner/Banner";
+import Gallery from "./Gallery/Gallery";
 import QuickHeading from "./QuickHeader/QuickHeading";
 import ServiceOverview from "./ServiceOverview/ServiceOverview";
 
@@ -12,6 +13,9 @@ const Home = () => {
       </section>
       <section className="min-h-screen flex justify-center items-center">
         <ServiceOverview></ServiceOverview>
+      </section>
+      <section>
+        <Gallery></Gallery>
       </section>
     </section>
   );

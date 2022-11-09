@@ -12,7 +12,7 @@ const Item = ({ itemData }) => {
         <>
           <PhotoProvider>
             <PhotoView src={image}>
-              <img className="w-full" src={image} alt="" />
+              <img  src={image} alt="" />
             </PhotoView>
           </PhotoProvider>
         </>
