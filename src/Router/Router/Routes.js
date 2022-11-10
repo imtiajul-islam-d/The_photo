@@ -8,6 +8,7 @@ import Login from "../../Pages/Login/Login";
 import Signup from "../../Pages/Signup/Signup";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
 import ServiceDetails from "../../Pages/ServiceDetails/ServiceDetails";
+import ReviewInputForm from "../../Pages/ServiceDetails/ReviewForService/ReviewInputForm/ReviewInputForm";
 
 export const router = createBrowserRouter([
     {
@@ -39,12 +40,16 @@ export const router = createBrowserRouter([
                 element: <Service></Service>
             },
             {
-                element: <PrivetRoute><ServiceDetails></ServiceDetails></PrivetRoute>,
+                element: <ServiceDetails></ServiceDetails>,
                 path: "/services/:id",
                 loader: async ({ params }) => {
                     console.log(params.id)
                   return fetch(`https://personal-review-server.vercel.app/services/${params.id}`);
                 },
+            },
+            {
+                element: <PrivetRoute><ReviewInputForm></ReviewInputForm></PrivetRoute>,
+                path: "/addReview"
             }
         ]
     }
