@@ -1,12 +1,23 @@
-import React, { useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link} from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext/AuthProvider";
 import ReviewCard from "./ReviewCard";
 import ReviewInputForm from "./ReviewInputForm.js/ReviewInputForm";
 
 const ReviewforService = ({ id }) => {
   const { user } = useContext(AuthContext);
-  const clocation = useLocation()
+  useEffect(() => {
+    const url = `https://personal-review-server.vercel.app/getReview/${id}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => console.log(data))
+  },[])
+  // useEffect(()=> {
+  //   const url = `http://localhost:5000/getMyReview/${user.email}`
+  //   fetch(url)
+  //   .then(res => res.json())
+  //   .then(data => console.log(data))
+  // },[])
   console.log(id, user);
   return (
     <section className="py-6 sm:py-12 dark:bg-gray-800 dark:text-gray-100">
