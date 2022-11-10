@@ -1,12 +1,11 @@
-import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import ReviewforService from "./ReviewForService/ReviewforService";
 import ServiceItem from "./ServiceItem";
 
+
 const ServiceDetails = () => {
   const detailsinfo = useLoaderData();
-  const { event, image, details, description, price } = detailsinfo.data;
-  console.log(details);
+  const { event, image, details, description, price, _id } = detailsinfo.data;
   return (
     <section className="dark:bg-gray-800 dark:text-gray-100">
       <div className="container p-6 py-12 mx-auto space-y-24 lg:px-8">
@@ -44,8 +43,8 @@ const ServiceDetails = () => {
             Purchase with ${price}
           </Link>
         </div>
+          <ReviewforService id={_id}></ReviewforService>
       </div>
-      <ReviewforService></ReviewforService>
     </section>
   );
 };
