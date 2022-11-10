@@ -8,7 +8,7 @@ import Login from "../../Pages/Login/Login";
 import Signup from "../../Pages/Signup/Signup";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
 import ServiceDetails from "../../Pages/ServiceDetails/ServiceDetails";
-import ReviewInputForm from "../../Pages/ServiceDetails/ReviewForService/ReviewInputForm.js/ReviewInputForm";
+
 
 export const router = createBrowserRouter([
     {
@@ -45,13 +45,6 @@ export const router = createBrowserRouter([
                 loader: async ({ params }) => {
                   return fetch(`https://personal-review-server.vercel.app/services/${params.id}`);
                 },
-            },
-            {
-                element: <PrivetRoute><ReviewInputForm></ReviewInputForm></PrivetRoute>,
-                path: "/addReview/:id",
-                loader: async ({ params }) => {
-                    return fetch(`https://personal-review-server.vercel.app/${params.id}`);
-                  },
             }
         ]
     }

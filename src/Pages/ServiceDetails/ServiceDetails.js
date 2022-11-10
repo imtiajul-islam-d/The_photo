@@ -6,6 +6,7 @@ import ServiceItem from "./ServiceItem";
 const ServiceDetails = () => {
   const detailsinfo = useLoaderData();
   const { event, image, details, description, price, _id } = detailsinfo.data;
+  console.log(_id);
   return (
     <section className="dark:bg-gray-800 dark:text-gray-100">
       <div className="container p-6 py-12 mx-auto space-y-24 lg:px-8">
