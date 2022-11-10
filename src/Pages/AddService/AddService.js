@@ -1,12 +1,53 @@
 import React from "react";
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddService = () => {
+    const handleOnSubmit = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const serviceName = form.serviceName.value;
+        const serviceImage = form.serviceImage.value;
+        const price = form.price.value;
+        const description = form.description.value;
+        const bulltetPoint = form.bulletPoint.value;
+        const insert = {
+            event: serviceName,
+            image: serviceImage,
+            price: price,
+            description: description,
+            details: [
+                bulltetPoint
+            ]
+        }
+        if(!serviceName || !serviceImage || !price || !description || !bulltetPoint){
+            toast('Please provide all the information')
+        }else{
+            fetch('https://personal-review-server.vercel.app/services/create', {
+            method: 'POST',
+            headers: {
+                "content-type":"application/json"
+            },
+            body: JSON.stringify(insert)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.data.acknowledged){
+                toast('Service added successfully.')
+                form.reset()
+            }
+        })
+        }
+        // /services/create
+        // console.log(insert)
+        
+    }
   return (
     <div className="flex flex-col container mx-auto p-6 rounded-md sm:p-10 dark:bg-gray-900 dark:text-gray-100">
       <div className="mb-8 text-center">
         <h1 className="my-3 text-4xl font-bold">Add a service</h1>
       </div>
       <form
+        onSubmit={handleOnSubmit}
         novalidate=""
         action=""
         className="space-y-12 ng-untouched ng-pristine ng-valid"
@@ -64,8 +105,8 @@ const AddService = () => {
             </label>
             <input
               type="text"
-              name="serviceName"
-              id="serviceName"
+              name="price"
+              id="price"
               required
               placeholder="Enter a service name"
               className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
@@ -75,11 +116,12 @@ const AddService = () => {
         <div className="space-y-2">
           <div>
             <button
-              type="button"
+              type="submit"
               className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-400 bg-orange-400 dark:text-gray-900"
             >
               Add item
             </button>
+            <Toaster />
           </div>
         </div>
       </form>
