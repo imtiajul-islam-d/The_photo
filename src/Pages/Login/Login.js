@@ -11,83 +11,82 @@ import useTitle from "../../hooks/useTitle";
 const googleProvider = new GoogleAuthProvider();
 
 export default function Example() {
-  useTitle("The Photo || Login")
+  useTitle("The Photo || Login");
   const { emailLogin, googleAuthLogin, loading } = useContext(AuthContext);
-  const [error, setError] = useState('')
+  const [error, setError] = useState("");
   // this section is for navigation
   const navigate = useNavigate();
-  const location = useLocation()
-  const from = location.state?.from?.pathname || '/'
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   // handling password login
   const handleEmailPasswordLogin = (event) => {
-    setError('')
+    setError("");
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     emailLogin(email, password)
-    .then(result => {
-      // calling for jwt token start
-      const user = result.user;
-      const currentUser = {
-        email: user.email
-      }
-      fetch('https://personal-review-server.vercel.app/jwt', {
-        method: "POST",
-        headers:{
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify(currentUser)
-      })
-      .then(res => res.json())
-      .then(data => {
-        localStorage.setItem('photoGrapher-token', data.token)
-        navigate(from, {replace: true})
-      })
-      // calling for jwt token end
- 
-      form.reset()
-    })
-    .catch(err => {
-      setError(err.message);
-    })
-    
-  };
-  // google login
-  const googlePopupLogin = () => {
-    setError('')
-    googleAuthLogin(googleProvider)
-    .then((result) => {
+      .then((result) => {
         // calling for jwt token start
         const user = result.user;
         const currentUser = {
-          email: user.email
-        }
-        fetch('https://personal-review-server.vercel.app/jwt', {
+          email: user.email,
+        };
+        fetch("https://personal-review-server.vercel.app/jwt", {
           method: "POST",
-          headers:{
-            'content-type': 'application/json'
+          headers: {
+            "content-type": "application/json",
           },
-          body: JSON.stringify(currentUser)
+          body: JSON.stringify(currentUser),
         })
-        .then(res => res.json())
-        .then(data => {
-          localStorage.setItem('photoGrapher-token', data.token)
-          navigate(from, {replace: true})
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("photoGrapher-token", data.token);
+            navigate(from, { replace: true });
+          });
+        // calling for jwt token end
+
+        form.reset();
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
+  // google login
+  const googlePopupLogin = () => {
+    setError("");
+    googleAuthLogin(googleProvider)
+      .then((result) => {
+        // calling for jwt token start
+        const user = result.user;
+        const currentUser = {
+          email: user.email,
+        };
+        fetch("https://personal-review-server.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
         })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("photoGrapher-token", data.token);
+            navigate(from, { replace: true });
+          });
         // calling for jwt token end
       })
       .catch((err) => {
-        setError(err.message)
+        setError(err.message);
       });
   };
   return (
     <>
-    {
-      loading && (
-        <h1>Loading</h1>
-      )
-    }
+      {loading && (
+        <div className="h-[60vh] flex items-center justify-center">
+          <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-black dark:border-violet-400"></div>
+        </div>
+      )}
       <div className="flex min-h-[70vh] items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ">
         <div className="w-full max-w-md space-y-8">
           <div className="flex items-center justify-center">
@@ -136,12 +135,12 @@ export default function Example() {
                 />
               </div>
             </div>
-            {
-              error && <div className="text-red-600">{error}</div>
-            }
+            {error && <div className="text-red-600">{error}</div>}
             <div className="flex items-center justify-between">
               <div className="flex items-center">
-                <Link to='/signup' className="underline">Register</Link>
+                <Link to="/signup" className="underline">
+                  Register
+                </Link>
               </div>
 
               <div className="text-sm">
@@ -173,7 +172,10 @@ export default function Example() {
               <div>
                 <div className="text-center mb-4">Or</div>
                 <div className="flex justify-center items-center text-orange-500">
-                  <span className="cursor-pointer text-xl" onClick={googlePopupLogin}>
+                  <span
+                    className="cursor-pointer text-xl"
+                    onClick={googlePopupLogin}
+                  >
                     <FaGoogle></FaGoogle>
                   </span>
                 </div>
