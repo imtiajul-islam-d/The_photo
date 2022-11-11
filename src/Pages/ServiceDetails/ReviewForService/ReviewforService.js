@@ -23,13 +23,18 @@ const ReviewforService = ({ id, name }) => {
       <div className="container p-6 mx-auto space-y-8">
         <div className="space-y-2 text-center">
           <h2 className="text-3xl font-bold">Let's see, what people say!</h2>
+          {!loader && reviewDisplay.length === 0 && <div>No review added</div>}
         </div>
+        {loader && (
+          <div className="h-[60vh] flex items-center justify-center">
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-black dark:border-violet-400"></div>
+          </div>
+        )}
         <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
-          {loader ? (
-            <h2>Loading</h2>
-          ) : (
-            reviewDisplay.map((review) => <ReviewCard review={review}></ReviewCard>)
-          )}
+          {!loader &&
+            reviewDisplay.map((review) => (
+              <ReviewCard review={review}></ReviewCard>
+            ))}
         </div>
       </div>
       <div className="flex flex-col items-center justify-center">
@@ -43,8 +48,8 @@ const ReviewforService = ({ id, name }) => {
             userEmail={user.email}
             serviceId={id}
             serviceName={name}
-            reviewDisplay = {reviewDisplay}
-            setReviewDisplay ={setReviewDisplay}
+            reviewDisplay={reviewDisplay}
+            setReviewDisplay={setReviewDisplay}
           ></ReviewInputForm>
         ) : (
           <>
