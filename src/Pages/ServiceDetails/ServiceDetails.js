@@ -13,7 +13,7 @@ const ServiceDetails = () => {
 const handleDelete = (id) => {
   const confirm = window.confirm(`Are you sure you want to delete this?`);
   if (confirm) {
-    const url = `http://localhost:5000/deleteService/${id}`;
+    const url = `https://personal-review-server.vercel.app/deleteService/${id}`;
     fetch(url, {
       method: "DELETE",
     })
