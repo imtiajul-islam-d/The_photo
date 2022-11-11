@@ -13,7 +13,7 @@ const ReviewforService = ({ id, name }) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setReviewDisplay(data);
+        setReviewDisplay(data.data);
         setLoader(false);
       });
   }, [id]);
@@ -28,7 +28,7 @@ const ReviewforService = ({ id, name }) => {
           {loader ? (
             <h2>Loading</h2>
           ) : (
-            reviewDisplay.data.map((review) => <ReviewCard review={review}></ReviewCard>)
+            reviewDisplay.map((review) => <ReviewCard review={review}></ReviewCard>)
           )}
         </div>
       </div>
@@ -43,6 +43,8 @@ const ReviewforService = ({ id, name }) => {
             userEmail={user.email}
             serviceId={id}
             serviceName={name}
+            reviewDisplay = {reviewDisplay}
+            setReviewDisplay ={setReviewDisplay}
           ></ReviewInputForm>
         ) : (
           <>

@@ -33,7 +33,6 @@ const MyReviews = () => {
           }
         });
     }
-    console.log(id);
   };
   return (
     <section className="py-6 sm:py-12 dark:bg-gray-800 dark:text-gray-100 container mx-auto">

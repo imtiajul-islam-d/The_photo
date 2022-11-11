@@ -1,7 +1,7 @@
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-const ReviewInputForm = ({ userName, photo, userEmail, serviceId, serviceName }) => {
+const ReviewInputForm = ({ userName, photo, userEmail, serviceId, serviceName, reviewDisplay, setReviewDisplay }) => {
   // take user data to store
   const handleOnsubmit = (e) => {
     e.preventDefault();
@@ -28,9 +28,8 @@ const ReviewInputForm = ({ userName, photo, userEmail, serviceId, serviceName })
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.data.acknowledged) {
-          console.log(data);
+          setReviewDisplay([ reviewObject,...reviewDisplay])
           toast("Review added successfully");
           form.reset();
         }
