@@ -14,7 +14,7 @@ const ReviewCard = ({ review, handleDelete }) => {
       setCardButton(!cardButton)
       const changes = e.target.updatedReview.value;
       const changedData = {changes}
-      fetch(`http://localhost:5000/reviewUpdate/${_id}`, {
+      fetch(`https://personal-review-server.vercel.app/reviewUpdate/${_id}`, {
           method: "PUT",
           headers: {
             "content-type": 'application/json'
