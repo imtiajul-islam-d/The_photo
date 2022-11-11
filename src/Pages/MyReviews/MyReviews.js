@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext/AuthProvider";
 import ReviewCard from "./ReviewCard";
 import toast, { Toaster } from "react-hot-toast";
+import useTitle from "../../hooks/useTitle";
 
 const MyReviews = () => {
   const [info, setInfo] = useState([]);
   const { user, logout } = useContext(AuthContext);
   const [loader, setLoader] = useState(true);
+  useTitle("The Photo || My Reviews")
 
   useEffect(() => {
     const url = `https://personal-review-server.vercel.app/getMyReview/${user.email}`;

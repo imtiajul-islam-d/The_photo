@@ -5,11 +5,13 @@ import { GiPhotoCamera } from "react-icons/gi";
 import { GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../../context/AuthContext/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
+import useTitle from "../../hooks/useTitle";
 
 // creating google provider
 const googleProvider = new GoogleAuthProvider();
 
 const Signup = () => {
+    useTitle("The Photo || Register")
     const [error, setError] = useState('');
     const {googleAuthLogin, createEmailAccount, updateHandler, logout} = useContext(AuthContext);
     const navigate = useNavigate()

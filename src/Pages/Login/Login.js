@@ -5,11 +5,13 @@ import { GiPhotoCamera } from "react-icons/gi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
+import useTitle from "../../hooks/useTitle";
 
 // creating google provider
 const googleProvider = new GoogleAuthProvider();
 
 export default function Example() {
+  useTitle("The Photo || Login")
   const { emailLogin, googleAuthLogin } = useContext(AuthContext);
   const [error, setError] = useState('')
   // this section is for navigation
@@ -61,7 +63,7 @@ export default function Example() {
         const currentUser = {
           email: user.email
         }
-        fetch('http://localhost:5000/jwt', {
+        fetch('https://personal-review-server.vercel.app/jwt', {
           method: "POST",
           headers:{
             'content-type': 'application/json'

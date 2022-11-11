@@ -1,10 +1,12 @@
 import React from "react";
+import useTitle from "../../hooks/useTitle";
 import Banner from "./Banner/Banner";
 import Gallery from "./Gallery/Gallery";
 import QuickHeading from "./QuickHeader/QuickHeading";
 import ServiceOverview from "./ServiceOverview/ServiceOverview";
 
 const Home = () => {
+  useTitle('The photo || Home')
   return (
     <section>
       <Banner></Banner>

@@ -1,10 +1,11 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 import ServiceView from "./ServiceView";
 
 const Service = () => {
   const services = useLoaderData();
-
+  useTitle("The Photo || Services")
   return (
     <section className="py-6 sm:py-12 dark:bg-gray-800 dark:text-gray-100 container mx-auto">
       <div className="container p-6 mx-auto space-y-8">

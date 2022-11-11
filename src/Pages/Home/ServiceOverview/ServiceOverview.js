@@ -17,7 +17,6 @@ const ServiceOverview = () => {
       setService(serviceData)
     })
   }, [])
-  console.log(service)
   return (
     <section className="py-6 sm:py-12 dark:bg-gray-800 dark:text-gray-100 container mx-auto">
       <div className="container p-6 mx-auto space-y-8">

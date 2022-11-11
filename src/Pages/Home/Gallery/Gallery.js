@@ -14,7 +14,6 @@ const Gallery = () => {
         setImage(serviceData);
       });
   }, []);
-  console.log(image);
   return (
     <section className="py-6 dark:bg-gray-800 dark:text-gray-50">
       <div>

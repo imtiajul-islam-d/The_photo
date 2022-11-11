@@ -17,7 +17,6 @@ const ReviewforService = ({ id, name }) => {
         setLoader(false);
       });
   }, [id]);
-  console.log(id, user);
   return (
     <section className="py-6 sm:py-12 dark:bg-gray-800 dark:text-gray-100">
       <div className="container p-6 mx-auto space-y-8">
@@ -33,7 +32,7 @@ const ReviewforService = ({ id, name }) => {
         <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
           {!loader &&
             reviewDisplay.map((review) => (
-              <ReviewCard review={review}></ReviewCard>
+              <ReviewCard key={review._id} review={review}></ReviewCard>
             ))}
         </div>
       </div>
