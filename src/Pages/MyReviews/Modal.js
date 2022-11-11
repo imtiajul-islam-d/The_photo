@@ -4,7 +4,7 @@ const Modal = ({serviceName, handleUpdate, setCardButton , cardButton}) => {
     return (
         <div className='fixed inset-0 bg-opacity-30 backdrop-blur-md z-10 flex justify-center items-center'>
             <div>
-                <form onSubmit={handleUpdate} className='bg-orange-400 p-5'>
+                <form onSubmit={handleUpdate} className='bg-gray-500 p-5'>
                     <div className='text-center mb-3'>
                        {serviceName}
                     </div>
