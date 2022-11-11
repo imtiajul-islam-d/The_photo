@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const ServiceView = ({data}) => {
     const {image, event, price, description, _id} = data
     const showDescription = description.substring(0, 100);
-    console.log(_id)
   return (
     <article className="flex flex-col dark:bg-gray-900 border">
       {/*  */}

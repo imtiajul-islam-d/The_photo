@@ -47,49 +47,8 @@ export default function Header() {
               className="text-base font-medium relative cursor-pointer"
             >
               Services
-              {/* <span className="flex items-center space-x-2">
-                <span>Services</span>{" "}
-                <span>
-                  <FaArrowDown></FaArrowDown>
-                </span>
-              </span>
-              <ul
-                className={`absolute text-black bg-[#FFAD01] min-w-full mt-7 rounded-sm p-4 space-y-3 ${
-                  toggle ? "block" : "hidden"
-                }`}
-              >
-                <li>
-                  <Link className="bg-white rounded-sm text-orange-500 px-3 py-3 block hover:bg-orange-500 hover:text-white">
-                    Wedding
-                  </Link>
-                </li>
-                <li>
-                  <Link className="bg-white rounded-sm text-orange-500 px-3 py-3 block hover:bg-orange-500 hover:text-white">
-                    FASHION{" "}
-                  </Link>
-                </li>
-                <li>
-                  <Link className="bg-white rounded-sm text-orange-500 px-3 py-3 block hover:bg-orange-500 hover:text-white">
-                    BIRTHDAY{" "}
-                  </Link>
-                </li>
-                <li>
-                  <Link className="bg-white rounded-sm text-orange-500 px-3 py-3 block hover:bg-orange-500 hover:text-white">
-                    COMMERCIAL{" "}
-                  </Link>
-                </li>
-                <li>
-                  <Link className="bg-white rounded-sm text-orange-500 px-3 py-3 block hover:bg-orange-500 hover:text-white">
-                    CORPORATE EVENTS
-                  </Link>
-                </li>
-                <li>
-                  <Link className="bg-white rounded-sm text-orange-500 px-3 py-3 block hover:bg-orange-500 hover:text-white">
-                    TRAVEL & NATURE
-                  </Link>
-                </li>
-              </ul> */}
             </Link>
+            <Link to='/blog'>Blog</Link>
             {user ? (
               <>
                 <Link to="/myReviews" className="text-base font-medium">
@@ -165,40 +124,19 @@ export default function Header() {
             </div>
             <div className="space-y-6 py-6 px-5">
               <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                <Link to="/services" className="text-base font-medium text-[#FFAD01]">
+                <Link
+                  to="/services"
+                  className="text-base font-medium text-[#FFAD01]"
+                >
                   Services
                 </Link>
-
-                {/* <Link
-                  href="/"
-                  className="text-base font-medium text-[#FFAD01] "
-                >
-                  FASHION
-                </Link>
                 <Link
-                  href="/"
-                  className="text-base font-medium text-[#FFAD01] "
+                  to="/blog"
+                  className="text-base font-medium text-[#FFAD01]"
                 >
-                  FASHION
+                  Blog
                 </Link>
-                <Link
-                  href="/"
-                  className="text-base font-medium text-[#FFAD01] "
-                >
-                  FASHION
-                </Link>
-                <Link
-                  href="/"
-                  className="text-base font-medium text-[#FFAD01] "
-                >
-                  FASHION
-                </Link>
-                <Link
-                  href="/"
-                  className="text-base font-medium text-[#FFAD01] "
-                >
-                  FASHION
-                </Link> */}
+                
                 {user ? (
                   <>
                     <Link
