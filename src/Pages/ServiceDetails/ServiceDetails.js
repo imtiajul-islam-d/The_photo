@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import useTitle from "../../hooks/useTitle";
 import ReviewforService from "./ReviewForService/ReviewforService";
 import ServiceItem from "./ServiceItem";
@@ -8,6 +8,25 @@ const ServiceDetails = () => {
   useTitle("The Photo|| Details Service")
   const detailsinfo = useLoaderData();
   const { event, image, details, description, price, _id } = detailsinfo.data;
+  const navigate = useNavigate()
+  // delete service
+const handleDelete = (id) => {
+  const confirm = window.confirm(`Are you sure you want to delete this?`);
+  if (confirm) {
+    const url = `http://localhost:5000/deleteService/${id}`;
+    fetch(url, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data.deletedCount > 0) {
+          alert("done")
+          navigate("/services")
+        }
+      });
+  }
+};
+// delete service
   return (
     <section className="dark:bg-gray-800 dark:text-gray-100">
       <div className="container p-6 py-12 mx-auto space-y-24 lg:px-8">
@@ -15,6 +34,9 @@ const ServiceDetails = () => {
           <h2 className="text-3xl font-bold tracking-tight text-center sm:text-5xl dark:text-gray-50">
             {event ? event : ""}
           </h2>
+          <button className="bg-orange-400 py-2 px-3" onClick={() => handleDelete(_id)}>
+            Delete
+          </button>
         </div>
         <div className="flex flex-col r justify-between items-center">
           <div aria-hidden="true" className="lg:w-2/3">

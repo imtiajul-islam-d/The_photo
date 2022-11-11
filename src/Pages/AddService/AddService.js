@@ -110,7 +110,7 @@ const AddService = () => {
               name="price"
               id="price"
               required
-              placeholder="Enter a service name"
+              placeholder="Enter a service price"
               className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
             />
           </div>

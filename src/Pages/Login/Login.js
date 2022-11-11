@@ -12,7 +12,7 @@ const googleProvider = new GoogleAuthProvider();
 
 export default function Example() {
   useTitle("The Photo || Login")
-  const { emailLogin, googleAuthLogin } = useContext(AuthContext);
+  const { emailLogin, googleAuthLogin, loading } = useContext(AuthContext);
   const [error, setError] = useState('')
   // this section is for navigation
   const navigate = useNavigate();
@@ -83,6 +83,11 @@ export default function Example() {
   };
   return (
     <>
+    {
+      loading && (
+        <h1>Loading</h1>
+      )
+    }
       <div className="flex min-h-[70vh] items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ">
         <div className="w-full max-w-md space-y-8">
           <div className="flex items-center justify-center">
