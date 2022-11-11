@@ -15,7 +15,6 @@ export default function Example() {
   // this section is for navigation
   const navigate = useNavigate();
   const location = useLocation()
-  console.log(location)
   const from = location.state?.from?.pathname || '/'
   // handling password login
   const handleEmailPasswordLogin = (event) => {
@@ -25,8 +24,26 @@ export default function Example() {
     const email = form.email.value;
     const password = form.password.value;
     emailLogin(email, password)
-    .then(user => {
-      navigate(from, {replace: true})
+    .then(result => {
+      // calling for jwt token start
+      const user = result.user;
+      const currentUser = {
+        email: user.email
+      }
+      fetch('https://personal-review-server.vercel.app/jwt', {
+        method: "POST",
+        headers:{
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(currentUser)
+      })
+      .then(res => res.json())
+      .then(data => {
+        localStorage.setItem('photoGrapher-token', data.token)
+        navigate(from, {replace: true})
+      })
+      // calling for jwt token end
+ 
       form.reset()
     })
     .catch(err => {
@@ -36,9 +53,27 @@ export default function Example() {
   };
   // google login
   const googlePopupLogin = () => {
+    setError('')
     googleAuthLogin(googleProvider)
-      .then((user) => {
-        navigate(from, {replace: true})
+    .then((result) => {
+        // calling for jwt token start
+        const user = result.user;
+        const currentUser = {
+          email: user.email
+        }
+        fetch('http://localhost:5000/jwt', {
+          method: "POST",
+          headers:{
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(currentUser)
+        })
+        .then(res => res.json())
+        .then(data => {
+          localStorage.setItem('photoGrapher-token', data.token)
+          navigate(from, {replace: true})
+        })
+        // calling for jwt token end
       })
       .catch((err) => {
         setError(err.message)

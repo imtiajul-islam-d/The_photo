@@ -5,18 +5,29 @@ import toast, { Toaster } from "react-hot-toast";
 
 const MyReviews = () => {
   const [info, setInfo] = useState([]);
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {
     const url = `https://personal-review-server.vercel.app/getMyReview/${user.email}`;
-    fetch(url)
-      .then((res) => res.json())
+    fetch(url, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("photoGrapher-token")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          return logout()
+            .then(() => {})
+            .catch(() => {});
+        }
+        return res.json();
+      })
       .then((data) => {
         setInfo(data.data);
         setLoader(false);
       });
-  }, []);
+  }, [user.email]);
   const handleDelete = (id) => {
     const confirm = window.confirm(`Are you sure you want to delete this?`);
     if (confirm) {
@@ -62,7 +73,7 @@ const MyReviews = () => {
 
         <Toaster position="top-center" reverseOrder={false} />
 
-        {info.length === 0 ? (
+        {!loader && info.length === 0 ? (
           <div className="text-center font-bold text-orange-400">
             No reviews ware added
           </div>

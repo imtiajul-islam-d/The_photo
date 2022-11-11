@@ -34,6 +34,7 @@ const AuthProvider = ({children}) => {
     // implement logout
     const logout = () => {
         setLoading(true)
+        localStorage.removeItem("photoGrapher-token")
         return signOut(auth)
     }
     // get currently log in user
