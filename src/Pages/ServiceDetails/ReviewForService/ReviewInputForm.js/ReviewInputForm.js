@@ -1,7 +1,7 @@
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-const ReviewInputForm = ({ userName, photo, userEmail, serviceId }) => {
+const ReviewInputForm = ({ userName, photo, userEmail, serviceId, serviceName }) => {
   // take user data to store
   const handleOnsubmit = (e) => {
     e.preventDefault();
@@ -16,6 +16,7 @@ const ReviewInputForm = ({ userName, photo, userEmail, serviceId }) => {
       userName: userName,
       reviewText: review,
       serviceId,
+      serviceName,
       time
     };
     fetch("https://personal-review-server.vercel.app/review/create", {

@@ -44,7 +44,7 @@ const ServiceDetails = () => {
             Purchase with ${price}
           </Link>
         </div>
-          <ReviewforService id={_id}></ReviewforService>
+          <ReviewforService name ={event} id={_id}></ReviewforService>
       </div>
     </section>
   );

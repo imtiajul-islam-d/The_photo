@@ -4,7 +4,7 @@ import { AuthContext } from "../../../context/AuthContext/AuthProvider";
 import ReviewCard from "./ReviewCard";
 import ReviewInputForm from "./ReviewInputForm.js/ReviewInputForm";
 
-const ReviewforService = ({ id }) => {
+const ReviewforService = ({ id, name }) => {
   const { user } = useContext(AuthContext);
   const [reviewDisplay, setReviewDisplay] = useState([]);
   const [loader, setLoader] = useState(true);
@@ -17,12 +17,6 @@ const ReviewforService = ({ id }) => {
         setLoader(false);
       });
   }, [id]);
-  // useEffect(()=> {
-  //   const url = `http://localhost:5000/getMyReview/${user.email}`
-  //   fetch(url)
-  //   .then(res => res.json())
-  //   .then(data => console.log(data))
-  // },[])
   console.log(id, user);
   return (
     <section className="py-6 sm:py-12 dark:bg-gray-800 dark:text-gray-100">
@@ -48,6 +42,7 @@ const ReviewforService = ({ id }) => {
             photo={user.photoURL}
             userEmail={user.email}
             serviceId={id}
+            serviceName={name}
           ></ReviewInputForm>
         ) : (
           <>

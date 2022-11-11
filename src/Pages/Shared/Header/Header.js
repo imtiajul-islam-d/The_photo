@@ -92,7 +92,7 @@ export default function Header() {
             </Link>
             {user ? (
               <>
-                <Link to="#" className="text-base font-medium">
+                <Link to="/myReviews" className="text-base font-medium">
                   My reviews
                 </Link>
                 <Link to="/addService" className="text-base font-medium">
@@ -202,7 +202,7 @@ export default function Header() {
                 {user ? (
                   <>
                     <Link
-                      to="/"
+                      to="/myReviews"
                       className="text-base font-medium text-[#FFAD01]"
                     >
                       My reviews
