@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext/AuthProvider";
 import ReviewCard from "./ReviewCard";
 import ReviewInputForm from "./ReviewInputForm.js/ReviewInputForm";
@@ -8,6 +8,8 @@ const ReviewforService = ({ id, name }) => {
   const { user } = useContext(AuthContext);
   const [reviewDisplay, setReviewDisplay] = useState([]);
   const [loader, setLoader] = useState(true);
+  const location = useLocation()
+
   useEffect(() => {
     const url = `https://personal-review-server.vercel.app/getReview/${id}`;
     fetch(url)
@@ -52,7 +54,7 @@ const ReviewforService = ({ id, name }) => {
           ></ReviewInputForm>
         ) : (
           <>
-            <Link className="bg-orange-400 py-2 px-3" to="/login">
+            <Link state={{from: location}} className="bg-orange-400 py-2 px-3" to='/login' >
               Login
             </Link>
           </>
